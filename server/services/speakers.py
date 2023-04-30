@@ -41,7 +41,6 @@ async def retrieve_speakers() -> List[Speaker]:
 
 async def update_speaker(speaker: Speaker, data: SpeakerUpdate) -> Speaker:
     try:
-        print(data)
         for field, value in data.items():
             if value is not None:
                 setattr(speaker, field, value)
