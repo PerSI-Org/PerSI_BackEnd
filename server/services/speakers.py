@@ -4,9 +4,8 @@ from pymongo.errors import PyMongoError
 from bson.objectid import ObjectId
 from typing import Dict
 from server.models.speaker import Speaker, SpeakerUpdate
-from server.models import mongodb as client
-from server.config import MONGO_DB_NAME, MONGO_DB_URL
 from server.models import mongodb
+from server.config import MONGO_DB_NAME, MONGO_DB_URL
 
 
 async def add_speaker(speaker: Speaker) -> Speaker:
