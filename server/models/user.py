@@ -9,6 +9,12 @@ class User(Model):
     password: str
 
 
+class UserCreate(BaseModel):
+    name: str = Field(None, example="김지우")
+    email: str = Field(None, example="example@goolge.com")
+    password: str = Field(None, example="example1234!")
+
+
 class UserUpdate(BaseModel):
     name: Optional[str] = Field(None, example="김지우")
     email: Optional[str] = Field(None, example="example@goolge.com")

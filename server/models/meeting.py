@@ -11,6 +11,12 @@ class Meeting(Model):
     speakers_id: List[ObjectId]
 
 
+class MeetingCreate(BaseModel):
+    name: str = Field(None, example="김지우")
+    description: str = Field(None, example="example@goolge.com")
+    speakers_id: List[str]
+
+
 class MeetingUpdate(BaseModel):
     name: Optional[str] = Field(None, example="김지우")
     description: Optional[str] = Field(None, example="example@goolge.com")

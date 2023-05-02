@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "persi-server",
+  "private_key_id": "34f8d30f422740f4a74c9bdf2d40ae5c1e754043",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDB8qJ1OJVpGaXs\n8rD8FtrszuzGj0ko3HENuX8haIJoskQO9uix3Bbt+3fMPrlG+eqke+F2lvEVmnQb\nV9Yj5dDQru73+kprsrq2WXeg+Jncr19OhNjaBM76o0jihMWFTXpYaVzShP+4wXfb\nydezATzmj+P7AnA5GIj1Y9bWrbr7sefrAQO1XoIAmVPEQsJvpzl66rG/1lhQ8DwX\nKEEsyDOtjJX9FnI+UTkT+gIjq/sT4DgbMkLNSQV0NKFwam64GFEsSXqDYu7H01/2\n5nYbLS+vGjrhD5jbtcFUhNm3ZmYvys4W86+pF6Lm4VM/uHqK0kSrMruwuy+EPBC+\n1At4OrMDAgMBAAECggEALEiud314AAtvK28uoiDF1BRbU+sblUzgM3YLZSFrxWQO\nzivqbdIHGke0ztnzjBU8UlpG3MESQxCFOkkQCBpNV5jZz51CqNyibUh4XDTnTNBu\nPotuyDkY2Xm3BqGySAGs0csc+qSLjy/9oh2wNpstwKdSMtoXrbHAc+dcAqCgdR9/\nzISNQmWXcx6DPZl7v4Q5lQ6Z1u4U9KU3bIALQbrDZFnB9Ebr0wa74jKzlcEGiVTI\nwSEf2LuuutNoyCk9rUTrLwvwfudr/dmn3+t6PylwnoS08xvaCZF+cn00z5ig1g9H\nze/BQtfA537z3igqWGNH1DEXBa564uyCyKmflqQ1YQKBgQD1iHw3MuHilsyXk1PK\n4L1SAb1W1Pkp9THrsouz/t1maWg3rlXRow7u0j0fyYX39jYMgnjPTvquQLaKos9B\n1UsRSuoWNv1eY/aBHQk1NDca5SbotnLjkARtODdVt/yxG+vZRSWMdABbE/Ws2YyU\n8tF7ioYIZwJrLBb7mPJUk4rNNwKBgQDKNzIsICvXuEGkpiSph6kU0jPf/UXzZIip\nvAHD00e2OFovH7m20C5CKn7a9C0OOtPyJnspjmU0q0dIWr6XUky6glZMXg2mMqH9\njK9vqe0e2VMiIZDIFwJINDDsaNce9nGSZST9dR/5wdCy+K50VMavIgcK5oon4yNp\nOr8EAqnOlQKBgEOLmYhh4gxAqeXk7L86FjryKZEyo5zsTCBoDNCmg2fCBZ6Twh4a\numfuxEvzV3yAahwE5JE7S/EV8mGvKk8VC0KllkIoPIlz/INGZpsRUzt94LdSQcbi\nfqVBOs/E/qoGYVpzEEJUQyjLE+HKM0diiUhwMjErjVnIVkY+rCOiNyP/AoGAbv4E\n5/twlSNpxHn9PaBcyjTmjFd0gbf421F6loXtorMjrSH4ycNS4LZ6kqvb3yejFhLR\nH2otWs94fNpyKpTd0LGhtKEbVNIN4CHMWbonkPswildqJKmccw1SnTCegzw58mTZ\n/NTBDFG5v8KH3wp5U7+VpgIMawBde3DnT8g2dFECgYEAhCnrJtoIpyka3s4lbn3i\nhJ7fijaVxWYlYGql5bUOTa/Qwz9m8Y9M/IzvWgfNGKTy0e9PhTOzc8iJdH6mz9cI\ncgPBePIgudnEGAxKk3rZU5rj7s2qD4qdcCpLQrQvPEMk27PdIl2Gd6aDOonKIYp/\nlIT7OFYl8itVuR0GDsCcR0E=\n-----END PRIVATE KEY-----\n",
+  "client_email": "persi-admin@persi-server.iam.gserviceaccount.com",
+  "client_id": "112631650707643113830",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/persi-admin%40persi-server.iam.gserviceaccount.com"
+}
