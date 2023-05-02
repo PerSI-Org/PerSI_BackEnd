@@ -13,14 +13,15 @@ from server.services.speakers import (
 )
 from server.models.speaker import (
     Speaker,
-    SpeakerUpdate
+    SpeakerUpdate,
+    SpeakerCreate
 )
 
 router = APIRouter()
 
 
 @router.post("/", response_description="Add new speaker", response_model=Speaker)
-async def create_speaker(speaker: Speaker = Body(...)):
+async def create_speaker(speaker: SpeakerCreate = Body(...)):
     speaker = jsonable_encoder(speaker)
     try:
         new_speaker = await add_speaker(speaker)

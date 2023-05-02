@@ -15,14 +15,15 @@ from server.services.users import (
 from server.models.user import (
     User,
     UserUpdate,
-    UserLogin
+    UserLogin,
+    UserCreate
 )
 
 router = APIRouter()
 
 
 @router.post("/", response_description="Add new user", response_model=User)
-async def create_user(user: User = Body(...)):
+async def create_user(user: UserCreate = Body(...)):
     user = jsonable_encoder(user)
     try:
         new_user = await add_user(user)

@@ -13,14 +13,15 @@ from server.services.meetings import (
 )
 from server.models.meeting import (
     Meeting,
-    MeetingUpdate
+    MeetingUpdate,
+    MeetingCreate
 )
 
 router = APIRouter()
 
 
 @router.post("/", response_description="Add new meeting", response_model=Meeting)
-async def create_meeting(meeting: Meeting = Body(...)):
+async def create_meeting(meeting: MeetingCreate = Body(...)):
     meeting = jsonable_encoder(meeting)
     try:
         new_meeeting = await add_meeting(meeting)
