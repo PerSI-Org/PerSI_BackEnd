@@ -3,6 +3,9 @@ from fastapi.encoders import jsonable_encoder
 from typing import List, Optional
 from datetime import datetime
 from pymongo.errors import DuplicateKeyError
+import jwt
+from datetime import datetime, timedelta
+from server.config import SECRET_KEY
 
 from server.services.users import (
     add_user,
@@ -20,6 +23,17 @@ from server.models.user import (
 )
 
 router = APIRouter()
+
+
+def create_access_token(user_id: str, email: str, name: str) -> str:
+    payload = {
+        "_id": user_id,
+        "email": email,
+        "name": name
+    }
+
+    token = jwt.encode(payload, SECRET_KEY, algorithm="HS256")
+    return token
 
 
 @router.post("/", response_description="Add new user", response_model=User)
