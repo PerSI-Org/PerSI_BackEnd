@@ -10,6 +10,8 @@ from server.services.speakers import (
     retrieve_speaker,
     retrieve_speakers,
     update_speaker,
+    register_speaker_to_model,
+    concat_speaker_call_data
 )
 from server.models.speaker import (
     Speaker,
@@ -64,3 +66,21 @@ async def delete_speaker_data(id: str):
         raise HTTPException(status_code=404, detail="Speaker not found")
     await delete_speaker(speaker)
     return {"message": "Speaker deleted successfully"}
+
+
+@router.post("/register_speaker")
+async def register_speaker(speaker_id: str):
+    try:
+        speaker = await retrieve_speaker(speaker_id)
+        return await register_speaker_to_model(speaker)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+
+@router.post("concat_call_data")
+async def concat_call_data(speaker_id: str):
+    try:
+        speaker = await retrieve_speaker(speaker_id)
+        return await concat_speaker_call_data(speaker)
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))

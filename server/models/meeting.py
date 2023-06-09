@@ -7,6 +7,8 @@ from typing import List
 class Meeting(Model):
     name: str
     description: str
+    audio_files: List[str]
+    conversation_file: str
     owner_id: ObjectId
     speakers_id: List[ObjectId]
 
