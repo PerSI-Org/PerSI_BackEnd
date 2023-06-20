@@ -33,7 +33,8 @@ $ python ./main.py
 
 ### 6. API 목록
 
-$ http://localhost:8000/docs#/
+- 아래 링크에 접속해주세요. (원격 서버라면 localhost 대신 다른 ip를 입력해주세요.)
+- http://localhost:8000/docs#/
 
 ### 추가 환경 설정
 
