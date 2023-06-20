@@ -90,8 +90,12 @@ async def register_speaker_to_model(speaker: Speaker):
     # Count spakers length
     current_speakers_count = len(speakers)
     # Temporary location
-    destination_file_name = parent_directory + \
-        f"/Wav2vec_model/src/data/{current_speakers_count - 1}/{speaker.id}.flac"
+    destination_directory = parent_directory + f"/Wav2vec_model/src/data/{current_speakers_count - 1}/"
+    
+    if not os.path.exists(destination_directory):
+        os.makedirs(destination_directory)
+
+    destination_file_name = destination_directory + str(speaker.id) + ".flac"
 
     blob = bucket.blob(source_blob_name)
     blob.download_to_filename(destination_file_name)
@@ -115,6 +119,10 @@ async def register_speaker_to_model(speaker: Speaker):
     # Create train set and train the model
     train()
 
+    speaker.register_number = current_speakers_count - 1
+
+    update_speaker = await mongodb.engine.save(speaker)
+
     return {"message": f"Successfully registered and trained speaker {speaker.id}"}
 
 # 통화 녹음 파일들을 GCP 버킷에서 불러와서 하나의 화자의 목소리로 변형해 등록하는 함수.
@@ -137,24 +145,30 @@ async def concat_speaker_call_data(speaker: Speaker):
         blob = bucket.blob(source_blob_name)
         blob.download_to_filename(destination_file_name)
 
+    for file in destination_file_names:
+        convert_file_to_wav(file)
+
     # Convert voice sample using speaker_diarization_for_data function
     data_out_dir = parent_directory + "/tmp"
     concat_filename = f"{speaker.id}_concated"
 
-    for data_in_dir in destination_file_name:
-        speaker_diarization_for_data(
-            data_in_dir, data_out_dir, concat_filename)
+    speaker_diarization_for_data(data_out_dir, data_out_dir, concat_filename+".wav")
 
     # 업로드할 파일 경로
-    concated_audio_file_path = os.path.join(data_out_dir, concat_filename)
+    concated_audio_file_path = os.path.join(data_out_dir, concat_filename+".wav.wav")
 
-    blob_result = bucket.blob(concat_filename)
+    blob_result = bucket.blob(concat_filename+".wav.wav")
 
     # 분리된 오디오 파일을 버킷에 업로드
     blob_result.upload_from_filename(concated_audio_file_path)
 
+    file_list = os.listdir(data_out_dir)
+    for file_name in file_list:
+        file_path = os.path.join(data_out_dir, file_name)
+        os.remove(file_path)
+
     # 업로드된 파일의 공개 URL 생성
-    url = f"https://storage.googleapis.com/{bucket_name}/{concat_filename}"
+    url = f"https://storage.googleapis.com/{bucket_name}/{concat_filename}.wav.wav"
 
     speaker.voice_sample = url
 
@@ -175,3 +189,12 @@ def convert_file_to_flac(file_path: str, target_format="flac") -> str:
     audio.export(flac_path, format=target_format)
 
     return flac_path
+
+def convert_file_to_wav(file_path: str, target_format="wav") -> str:
+    audio = AudioSegment.from_file(file_path)
+
+    # Save as m4a
+    m4a_path = file_path.rsplit(".", 1)[0] + f".{target_format}"
+    audio.export(m4a_path, format=target_format)
+
+    return m4a_path

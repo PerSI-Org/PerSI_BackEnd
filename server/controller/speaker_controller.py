@@ -16,7 +16,8 @@ from server.services.speakers import (
 from server.models.speaker import (
     Speaker,
     SpeakerUpdate,
-    SpeakerCreate
+    SpeakerCreate,
+    RegisterSpeaker
 )
 
 router = APIRouter()
@@ -69,15 +70,16 @@ async def delete_speaker_data(id: str):
 
 
 @router.post("/register_speaker")
-async def register_speaker(speaker_id: str):
+async def register_speaker(data: RegisterSpeaker = Body(...)):
     try:
-        speaker = await retrieve_speaker(speaker_id)
+        request = jsonable_encoder(data)
+        speaker = await retrieve_speaker(request['speaker_id'])
         return await register_speaker_to_model(speaker)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.post("concat_call_data")
+@router.post("/concat_call_data")
 async def concat_call_data(speaker_id: str):
     try:
         speaker = await retrieve_speaker(speaker_id)

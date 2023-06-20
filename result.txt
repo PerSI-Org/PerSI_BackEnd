@@ -1,0 +1,6 @@
+start=0.5s stop=0.5s speaker_SPEAKER_02
+start=0.5s stop=2.1s speaker_SPEAKER_00
+start=2.1s stop=5.0s speaker_SPEAKER_02
+start=9.4s stop=10.3s speaker_SPEAKER_03
+start=9.5s stop=11.2s speaker_SPEAKER_01
+start=10.9s stop=12.5s speaker_SPEAKER_03
