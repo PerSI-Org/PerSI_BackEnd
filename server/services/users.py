@@ -20,6 +20,11 @@ async def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 async def add_user(user: User) -> User:
     try:
+        # Check if email already exists
+        existing_user = await mongodb.engine.find_one(User, User.email == user["email"])
+        if existing_user:
+            raise HTTPException(status_code=400, detail="Email already exists")
+        
         password_hash = await get_password_hash(user["password"])
         user["password"] = password_hash
         new_user = User(**user)
