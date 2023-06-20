@@ -31,70 +31,15 @@ $ mongod --dbpath [데이터베이스 경로]
 
 $ python ./main.py
 
-## API 목록
+### 6. API 목록
 
-### 화자 등록
+$ http://localhost:8000/docs#/
 
-#### Request
+### 추가 환경 설정
 
-- URI: `/speakers`
-- Method: `POST`
-- Headers:
-    - `Content-Type`: `application/json`
-- Body:
+- PerSI_BackEnd/server/ 디렉토리 아래에 Wav2Vec, pyannote 레포지토리를 클론하여 넣어주세요.
+- 두 레포지토리는 server 브랜치를 기준으로 클론 해주세요.
 
-    ```json
-    {
-        "name": "김나현",
-        "profile_img": "image2"
-    }
-    ```
 
-#### Response
-
-- Status: `200 OK`
-- Body:
-
-    ```json
-    {
-        "data": [
-            {
-                "name": "김나현",
-                "profile_img": "image2"
-            }
-        ],
-        "code": 200,
-        "message": "Speaker created successfully."
-    }
-    ```
-
-### 화자 목록 조회
-
-#### Request
-
-- URI: `/speakers`
-- Method: `GET`
-
-#### Response
-
-- Status: `200 OK`
-- Body:
-
-    ```json
-    {
-        "data": [
-            {
-                "name": "김나현",
-                "profile_img": "image2"
-            },
-            {
-                "name": "이민성",
-                "profile_img": "image3"
-            }
-        ],
-        "code": 200,
-        "message": "Speakers retrieved successfully."
-    }
-    ```
 
                    
